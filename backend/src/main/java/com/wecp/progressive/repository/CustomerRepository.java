@@ -1,12 +1,17 @@
 package com.wecp.progressive.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 import com.wecp.progressive.entity.Customers;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customers,Integer>{
-    // @Query("select c from Customers c where c.name=:name sort by name")
-    // public Customers getCustomerNameSorted();
+public interface CustomerRepository extends JpaRepository<Customers, Integer> {
+
+    Customers findByCustomerId(@Param("customerId") int customerId);
+
+    void deleteByCustomerId(@Param("customerId") int customerId);
+    Customers findByNameAndEmail(@Param("name") String name, @Param("email") String email);
 }

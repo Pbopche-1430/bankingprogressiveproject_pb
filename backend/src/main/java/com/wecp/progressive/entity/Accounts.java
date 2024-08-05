@@ -18,6 +18,7 @@ public class Accounts implements Comparable<Accounts> {
         // constrcutor
     }
 
+
     public Accounts(int accountId, int customerId, double balance) {
         this.accountId = accountId;
         this.customer.setCustomerId(customerId);

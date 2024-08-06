@@ -70,11 +70,13 @@ export class TransactionComponent implements OnInit {
     if (this.transactionForm.invalid) {
       return;
     } else {
-      const data = this.transactionForm.value;
+      var data = this.transactionForm.value;
       console.log(data);
+      alert(data);
       data.transactionDate= new Date();
       const transaction: Transaction = new Transaction(data);
       console.log(transaction);
+      alert(transaction);
       this.bankService.performTransaction(transaction).subscribe(
         (res: any) => {
           this.transactionSuccess$ = of("Transaction performed successfully");
